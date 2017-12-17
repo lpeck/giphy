@@ -6,12 +6,70 @@
 
     <meta charset="UTF-8">
     <title>Holiday GIF</title>
+
+    <link rel="stylesheet" href="./assets/giphystyle.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="./assets/giphy.css">
 
 
 
   </head>
 
-<body background="./assets/images/christmas.png"  >
+<body background="./assets/images/christmas.png">
+
+<div id="intro"><h1>Holiday GIF generator</h1></div>
+
+<div id="themes-list"></div>
+
+    <form id="new-theme">
+      <label for="theme-input">Add your own theme</label>
+      <input type="text" id="theme-input"><br>
+
+      <!-- Button triggers new movie to be added -->
+      <input id="add-theme" type="submit" value="Add theme">
+    </form>
+
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+
+
+
+	var themes = ["Christmas tree" , "menorah", "Elf" , "Chanukah" , "snowflake" , "snowman" , "A Christmas Story" , "jingle bells" ,"dreidel", "fireplace" , "Christmas cookies" , "Grinch" , "Santa" , "Rudolph","candy cane", "hot cocoa"];
+
+	console.log(themes);
+
+	$("#add-theme").on("click", function(event){
+		event.preventDefault();
+
+		var newtheme = $("#theme-input").val().trim();
+
+		themes.push(newtheme);
+		console.log(themes);
+		$("#themes-list").empty();
+		CreateButtons();
+
+	});
+
+	function CreateButtons() {
+
+		for (var i = 0; i < themes.length; i++) {
+
+			var generate = $("<button>");
+			generate.addClass("theme");
+			generate.attr("data-name",themes[i]);
+			generate.text(themes[i]);
+
+			$("#themes-list").append(generate);
+		}
+	}
+
+CreateButtons();
+
+
+})
+
+
+</script>
+</body>

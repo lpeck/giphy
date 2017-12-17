@@ -1,0 +1,13 @@
+h1 {
+	color: #3C8D0D;
+	size: xx-large;
+}
+
+#intro {
+	width: 870px;
+	height: 30px;
+	text-align: center;
+	border-radius: 15px;
+	clear: both;
+	background: white;
+}

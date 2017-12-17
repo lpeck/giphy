@@ -66,3 +66,18 @@ h1 {
 	color: white;
 	padding: 5px 5px 5px 5px;
 }
+
+
+
+p {
+	width: 100px;
+	height: 20px;
+	background-color: #C21717;
+	border-width: 2px;
+	border-color: #3C8D0D; 
+	text-align: center;
+	border-style: solid;
+	border-radius: 15px;
+	color: white;
+	padding: 5px 5px 5px 5px;
+}

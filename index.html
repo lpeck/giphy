@@ -70,9 +70,9 @@ CreateButtons();
 
 	$("button").on("click",function() {
 		//$("#gifs").empty();
-		var choosenTheme = $(this).attr("data-theme");
+		var chosenTheme = $(this).attr("data-theme");
 
-		var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + choosenTheme + "&api_key=jhyQJv9Mc5VPG808UfdpMKY5VkJTAwAv";
+		var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + chosenTheme + "&api_key=jhyQJv9Mc5VPG808UfdpMKY5VkJTAwAv";
 
 		$.ajax({
 			url: queryURL,
@@ -94,7 +94,8 @@ CreateButtons();
 
 				var GIFimage = $("<img>");
 
-				GIFimage.attr("src", results[i].images.fixed_height.url);
+				GIFimage.attr("src", results[i].images.fixed_height_still.url).attr("data-still",results[i].images.fixed_height_still.url).attr("data-animate",results[i].images.fixed_height.url).attr("data-state", "still").attr("class","giphy");
+
 
 				themeDiv.append(GIFrating);
 				themeDiv.append(GIFimage);
@@ -104,8 +105,20 @@ CreateButtons();
 		})
 
 	});
+	$("#giphy").on("click", function() {
+		var state = $(this).attr("data-state");
 
-})
+		if (state === "still") {
+			$(this).attr("src",$(this).attr("data-animate"));
+			$(this).attr("data-state","animate");
+		}
+		else{
+			$(this).attr("src",$(this).attr("data-still"));
+			$(this).attr("data-state","still");
+		}
+	});
+		
+	});
 
 
 
